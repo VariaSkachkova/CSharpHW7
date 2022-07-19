@@ -66,4 +66,63 @@ void PrintElementByInputIndex (double [,] array)
         Console.WriteLine ("Элемента с таким индексом нет в массиве");
     }
 }
-Task50();
+//Task50();
+
+void Task52() 
+{
+Console.WriteLine("Задача 52. Задайте двумерный массив из целых чисел. Найдите среднее арифметическое элементов в каждом столбце.");
+Random random = new Random();
+int rows = 4;
+int columns = 5;
+int [,] array = new int[rows, columns];
+FillArray(array);
+PrintArray(array);
+Console.WriteLine("Среднее арифметическое по столбцам:");
+FindAvgInEachColumn(array);
+}
+void FillArray(int [,] array)
+{
+    Random random = new Random();
+    int rows = array.GetLength(0);
+    int columns = array.GetLength(1);
+    for (int i = 0; i < rows; i++)
+    {
+        for (int j = 0; j < columns; j++)
+        {
+            array[i, j] = random.Next(1, 11);
+        }
+    }
+}
+void PrintArray (int [,] array)
+{
+    int rows = array.GetLength(0);
+    int columns = array.GetLength(1);
+    for (int i = 0; i < rows; i++)
+    {
+        for (int j = 0; j < columns; j++)
+        {
+            Console.Write(array[i, j] + "\t");
+        }
+        Console.WriteLine();
+    }
+}
+void FindAvgInEachColumn (int [,] array)
+{
+    int rows = array.GetLength(0);
+    int columns = array.GetLength(1);
+    for (int j = 0; j < columns; j++)
+    {
+        double sum = 0;
+        double avg = 0;
+        for (int i = 0; i < rows; i++)
+        {
+            sum = sum + array[i,j];
+                        
+        }
+        avg = sum/rows;
+        Console.Write(avg + "\t");
+        
+        
+    }
+}
+Task52();
